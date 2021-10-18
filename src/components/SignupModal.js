@@ -6,20 +6,79 @@ export default function SignupModal(props) {
   const [user, setUser] = useState({
     username: "",
     password: "",
-    Email: "",
+    email: "",
   });
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.signIn
-      ? authStore.logging(user, "signIn")
-      : authStore.logging(user, "signUp");
-    props.closeModal();
+    authStore.signup(user)
+    // props.signIn
+    //   ? authStore.logging(user, "signIn")
+    //   : authStore.logging(user, "signUp");
   };
+  const handleSignin = (event) => {
+    event.preventDefault();
+    authStore.signin(user)};
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <Modal
+    <>
+      <Modal.Dialog>
+        <Modal.Header >
+          <Modal.Title>Signin</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <input name="username" placeholder="username" onChange={handleChange}/>
+          <input name="password" placeholder="password" onChange={handleChange}/>
+
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={authStore.logout}>New User</Button>
+          <Button variant="primary" onClick={handleSignin}>signIn</Button>
+        </Modal.Footer>
+      </Modal.Dialog>
+
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <input
+            name="username"
+            placeholder="username"
+            onChange={handleChange}
+          />
+          <input
+            name="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
+          <input name="email" placeholder="email" onChange={handleChange} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleSubmit}>
+            signIn
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            SignUp
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* <Modal
       show={props.isOpen}
       onHide={props.closeModal}
       size="lg"
@@ -70,6 +129,7 @@ export default function SignupModal(props) {
           Close
         </Button>
       </Modal.Footer>
-    </Modal>
+    </Modal> */}
+    </>
   );
 }

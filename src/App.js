@@ -1,18 +1,15 @@
 import "./App.css";
-import Jam3yaList from "./components/Jam3yaList";
-import { Route, Switch } from "react-router";
-import Nav from "./components/Nav";
-import SignupModal from "./components/SignupModal";
+import authStore from "./stores/authStore";
+import SignupModal from './Components/SignupModal'
 
 function App() {
   return (
     <div>
       <h1>Jam3ia</h1>
+      
+      <h2>{authStore.user? authStore.user.email: "no user"}</h2>
 
-      {/* <center>
-        <Jam3yaList />
-      </center> */}
-      <SignupModal />
+    <SignupModal/>
     </div>
   );
 }

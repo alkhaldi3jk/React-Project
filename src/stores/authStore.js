@@ -9,8 +9,9 @@ class AuthStore {
   constructor() {
     makeObservable(this, {
       user: observable,
-      logging: action,
-      logout: action,
+      signin:action,
+      signup:action,
+      logout:action
     });
   }
 
@@ -20,14 +21,32 @@ class AuthStore {
     this.user = decode(token);
   };
 
-  logging = async (userDate, path) => {
-    try {
-      const response = await api.post(`/${path}`, userDate);
-      this.setUser(response.data.token);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
+  signup = async (userData) => {
+      try {
+        const response = await api.post(`/signup`, userData);
+        this.setUser(response.data.token);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    signin = async (userData) => {
+      try {
+        const response = await api.post(`/signin`, userData);
+        this.setUser(response.data.token);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  // logging = async (userData, path) => {
+  //   try {
+  //     const response = await api.post(`/${path}`, userData);
+  //     this.setUser(response.data.token);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   logout = () => {
     delete api.defaults.headers.common.Authorization;
