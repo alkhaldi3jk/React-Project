@@ -11,17 +11,18 @@ export default function SignupModal(props) {
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.signup(user)
+    authStore.signup(user);
     // props.signIn
     //   ? authStore.logging(user, "signIn")
     //   : authStore.logging(user, "signUp");
   };
   const handleSignin = (event) => {
     event.preventDefault();
-    authStore.signin(user)};
+    authStore.signin(user);
+  };
 
   const [show, setShow] = useState(false);
 
@@ -31,19 +32,30 @@ export default function SignupModal(props) {
   return (
     <>
       <Modal.Dialog>
-        <Modal.Header >
+        <Modal.Header>
           <Modal.Title>Signin</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <input name="username" placeholder="username" onChange={handleChange}/>
-          <input name="password" placeholder="password" onChange={handleChange}/>
-
+          <input
+            name="username"
+            placeholder="username"
+            onChange={handleChange}
+          />
+          <input
+            name="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={authStore.logout}>New User</Button>
-          <Button variant="primary" onClick={handleSignin}>signIn</Button>
+          <Button variant="secondary" onClick={authStore.logout}>
+            New User
+          </Button>
+          <Button variant="primary" onClick={handleSignin}>
+            signIn
+          </Button>
         </Modal.Footer>
       </Modal.Dialog>
 

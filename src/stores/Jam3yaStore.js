@@ -53,6 +53,17 @@ class Jam3yaStore {
 //   }
 // };
 
+// availablejam3ya = async () => {
+//   try {
+//     const response = await axios.get(
+//       "https://coded-miniproject-jam3ya-be.herokuapp.com/jam3ya"
+//     );
+//     this.jam3ya = response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 const jam3yaStore = new Jam3yaStore();
 jam3yaStore.fetchjam3yat();
 export default jam3yaStore;
