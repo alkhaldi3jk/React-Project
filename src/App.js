@@ -1,7 +1,7 @@
 import "./App.css";
 import authStore from "./stores/authStore";
 import SignupModal from "./components/SignupModal";
-import Jam3yadetail from "./components/Jam3yadetail";
+// import Jam3yadetail from "./components/Jam3yadetail";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <h2>{authStore.user ? authStore.user.email : "no user"}</h2>
 
       <SignupModal />
-      <Jam3yadetail detail={detail} />
+      {/* <Jam3yadetail detail={detail} /> */}
     </div>
   );
 }
