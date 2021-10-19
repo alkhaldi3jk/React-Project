@@ -31,7 +31,7 @@ export default function SignupModal(props) {
 
   return (
     <>
-      <Modal.Dialog>
+      <Modal.Dialog className="signin">
         <Modal.Header>
           <Modal.Title>Signin</Modal.Title>
         </Modal.Header>

@@ -1,16 +1,20 @@
 import "./App.css";
-import SignupModal from "./Components/SignupModal";
-import Jam3yaList from "./Components/Jam3yaList";
-import NavBar from "./Components/NavBar";
+import NavBar from "./components/NavBar";
+import Jam3yaList from "./components/Jam3yaList";
+import SignupModal from "./components/SignupModal";
+import { Container, Row } from "react-bootstrap";
 
 function App() {
   return (
-    <div>
+    <div className="body">
       <NavBar />
       <SignupModal />
-
-      {/* <h2>{authStore.user ? authStore.user.email : "no user"}</h2> */}
-      <Jam3yaList />
+      <Container>
+        <Row md={3}>
+          {/* <h2>{authStore.user ? authStore.user.email : "no user"}</h2> */}
+          <Jam3yaList />
+        </Row>
+      </Container>
     </div>
   );
 }
