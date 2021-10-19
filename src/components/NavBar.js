@@ -6,17 +6,14 @@ function NavBar() {
   return (
     <Nav variant="tabs" defaultActiveKey="/home">
       <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
+        <Nav.Link href="/home">Jam3yat</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">
-          {/* <SignupModal/> */}
-        
-        </Nav.Link>
+        <Nav.Link eventKey="link-1">{/* <SignupModal/> */}</Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="disabled" disabled>
-          Disabled
+          {/* Disabled */}
         </Nav.Link>
       </Nav.Item>
     </Nav>

@@ -12,22 +12,21 @@ function Jam3yaList(props) {
 
   const openModal = () => setIsOpen(true);
 
-  const jam3yaList = jam3yaStore.jam3yat.map((jam3ya) => {
-    return (
-      <Col>
+  const jam3yaList = jam3yaStore.jam3yat.map((jam3ya) => (
+    <Col>
       <Jam3yaItem classname="list" jam3ya={jam3ya} key={jam3ya.id} />
-       </Col>
-    );
-  });
+    </Col>
+  ));
   return (
-    <div className="main__chatlist">
-      <button className="btn">
-        <span onClick={openModal}>New jam3ya</span>
-        <CreateJam3ya isOpen={isOpen} closeModal={closeModal} />
-      </button>
-
-      <div className="chatlist__items">{jam3yaList}</div>
-    </div>
+    <>
+      <div>
+        <button>
+          <span onClick={openModal}>New jam3ya</span>
+          <CreateJam3ya isOpen={isOpen} closeModal={closeModal} />
+        </button>
+      </div>
+      <div>{jam3yaList}</div>
+    </>
   );
 }
 export default observer(Jam3yaList);

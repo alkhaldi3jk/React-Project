@@ -3,8 +3,8 @@
   height: 100px;
 }
 
-* {
-  /* background-image: url("https://www.freeiconspng.com/uploads/money-png-17.png"); */
+.body {
+  background-image: url("https://www.freeiconspng.com/uploads/money-png-17.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
