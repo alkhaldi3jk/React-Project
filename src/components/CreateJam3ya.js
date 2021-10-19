@@ -23,10 +23,11 @@ export default function CreateJam3ya(props) {
     props.closeModal(); // this is to close the modal that is shown
   };
   return (
-    <Modal centered show={props.isOpen} onHide={props.closeModal}>
-      <Modal.Header closeButton>
+    <div>
+    <Modal centered >
+     
         <Modal.Title>Create a jam3ya</Modal.Title>
-      </Modal.Header>
+     
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <InputGroup>
@@ -50,10 +51,12 @@ export default function CreateJam3ya(props) {
           <DatePicker selected={jam3ya.startDate}
             onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
           />
+          Start Date
           <InputGroup>
             <DatePicker selected={jam3ya.endDate}
               onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
             />
+            End Date
           </InputGroup>
         </Form>
       </Modal.Body>
@@ -63,5 +66,10 @@ export default function CreateJam3ya(props) {
         </Button>
       </Modal.Footer>
     </Modal>
+
+
+{/* // form */}
+
+</div>
   );
 }

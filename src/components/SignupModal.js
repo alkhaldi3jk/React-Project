@@ -19,10 +19,10 @@ export default function SignupModal(props) {
     //   ? authStore.logging(user, "signIn")
     //   : authStore.logging(user, "signUp");
   };
-  const handleSignin = (event) => {
-    event.preventDefault();
-    authStore.signin(user);
-  };
+  // const handleSignin = (event) => {
+  //   event.preventDefault();
+  //   authStore.signin(user);
+  // };
 
   const [show, setShow] = useState(false);
 
@@ -31,11 +31,11 @@ export default function SignupModal(props) {
 
   return (
     <>
-      <Modal.Dialog className="signin">
-        <Modal.Header>
-          <Modal.Title>Signin</Modal.Title>
-        </Modal.Header>
+      {/* <Button variant="outline-success" onClick={handleShow}>
+        SignIn
+      </Button>
 
+      <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <input
             name="username"
@@ -48,25 +48,19 @@ export default function SignupModal(props) {
             onChange={handleChange}
           />
         </Modal.Body>
-
         <Modal.Footer>
-          <Button variant="outline-success" onClick={handleShow}>
-            New User
-          </Button>
           <Button variant="outline-success" onClick={handleSignin}>
-            signIn
+            SignIn
           </Button>
         </Modal.Footer>
-      </Modal.Dialog>
+      </Modal> */}
 
+      {/* signUp */}
       <Button variant="outline-success" onClick={handleShow}>
-        Launch demo modal
+        SignUp
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <input
             name="username"
@@ -81,9 +75,6 @@ export default function SignupModal(props) {
           <input name="email" placeholder="email" onChange={handleChange} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-success" onClick={handleSubmit}>
-            signIn
-          </Button>
           <Button variant="outline-success" onClick={handleSubmit}>
             SignUp
           </Button>
