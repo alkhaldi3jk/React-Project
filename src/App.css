@@ -4,12 +4,31 @@
 }
 
 .body {
-  background-image: url("https://www.freeiconspng.com/uploads/money-png-17.png");
-  background-repeat: no-repeat;
+  background-image: url("https://cdn.hipwallpaper.com/i/67/89/JldDRe.jpg");
+  /* ("https://www.freeiconspng.com/uploads/money-png-17.png"); */
+  /* background-repeat: no-repeat; */
   background-size: contain;
 }
 
 .list {
-  width: 100px;
-  height: 100px;
+  font-family: "serif";
+  font-size: 1pc;
+  background-color: rgb(122, 167, 140);
+  color: rgb(2, 24, 2);
+  text-align: center;
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: "----";
+  border: 1px solid white;
+  overflow: hidden;
+}
+
+.update {
+  background-color: rgb(31, 54, 31);
+  color: white;
+}
+.delete {
+  background-color: rgb(31, 54, 31);
+  color: white;
 }

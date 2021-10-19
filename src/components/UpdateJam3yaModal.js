@@ -10,15 +10,16 @@ function UpdateJam3yaModal({ jam3ya }) {
   const handleChange = (event) => {
     setJam3ya({ ...newjam3ya, [event.target.name]: event.target.value });
   };
-  const handleUpdate=()=>{
-    jam3yaStore.updateJam3ya(jam3ya._id)
-    console.log(jam3ya._id)
-  }
+  const handleUpdate = () => {
+    jam3yaStore.updateJam3ya(jam3ya._id);
+    console.log(jam3ya._id);
+  };
   return (
     <>
+      {/* i change this class name to btn btn-primary */}
       <button
         type="button"
-        class="btn btn-primary"
+        class="update"
         data-toggle="modal"
         data-target="#exampleModal"
       >
