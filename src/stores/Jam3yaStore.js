@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import api from "./api";
-import axios from "axios";
 
 class Jam3yaStore {
   jam3yat = [];
@@ -11,19 +10,20 @@ class Jam3yaStore {
 
   createjam3ya = async (jam3ya) => {
     try {
-      const res = await api.post("/Jam3yat", jam3ya);
-      this.Jam3yat.push(res.data);
+      const res = await api.post("/jam3ya", jam3ya);
+      this.jam3yat.push(res.data);
     } catch (error) {
       console.log("Jam3yatStore -> createjam3ya -> error", error);
     }
   };
 
-  fetchjam3yat = async () => {
+  fetchJam3yat = async () => {
     try {
-      const response = await api.get("/jam3ya");
-      this.Jam3yat = response.data;
+      const res = await api.get("/jam3ya");
+      console.log(res.data)
+      this.jam3yat = res.data;
     } catch (error) {
-      console.error("Jam3yatStore -> fetchjam3ya -> error", error);
+      console.error("Jam3yatStore -> fetchjam3yat -> error", error);
     }
   };
 }
@@ -65,5 +65,5 @@ class Jam3yaStore {
 // };
 
 const jam3yaStore = new Jam3yaStore();
-jam3yaStore.fetchjam3yat();
+jam3yaStore.fetchJam3yat();
 export default jam3yaStore;

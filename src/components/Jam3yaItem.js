@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import UpdateJam3yaModal from "./UpdateJam3yaModal";
 import jam3yaStore from "../stores/Jam3yaStore";
+import { Container, Row } from "react-bootstrap";
 
 export default function ChatJam3yaitem(props) {
   const jam3ya = props.jam3ya;
@@ -16,17 +16,13 @@ export default function ChatJam3yaitem(props) {
     jam3yaStore.deleteJam3ya(jam3ya.id);
   };
   return (
-    <div className="group">
-      <Link to={`/jam3ya/${jam3ya.slug}`}>
-        <div style={{ animationDelay: "0.1" }} className="chatlist__item">
-          <div className="avatar"></div>
-          <div className="userMeta">
-            <p>{jam3ya.password}</p>
-            <p>{jam3ya.Email}</p>
-            <span className="activeTime">{jam3ya.username}</span>
-          </div>
-        </div>
-      </Link>
+    <div className="item">
+      <Container>
+        <Row md={3}>
+          <p>{jam3ya.title}</p>
+          <img src={jam3ya.image} alt={jam3ya.title} />
+        </Row>
+      </Container>
 
       <Button className="delete" onClick={handleDelete}>
         Delete

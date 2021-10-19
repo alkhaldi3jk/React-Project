@@ -1,13 +1,17 @@
 import { Modal, Button, InputGroup, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import Jam3yaStore from "../stores/Jam3yaStore";
-import { observer } from "mobx-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-export default function CreateJam3yaModal(props) {
+export default function CreateJam3ya(props) {
   const [jam3ya, setJam3ya] = useState({
-    username: "",
-    password: "",
-    Email: "",
+    title: "",
+    image: "",
+    amount: 0,
+    limit: 0,
+    startDate: "",
+    endDate: "",
   });
   const handleChange = (e) => {
     setJam3ya({ ...jam3ya, [e.target.name]: e.target.value });
@@ -15,7 +19,7 @@ export default function CreateJam3yaModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     Jam3yaStore.createjam3ya(jam3ya);
-    console.log(Jam3yaStore);
+    console.log(jam3ya);
     props.closeModal(); // this is to close the modal that is shown
   };
   return (
@@ -26,24 +30,36 @@ export default function CreateJam3yaModal(props) {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <InputGroup>
-            <InputGroup.Text>username</InputGroup.Text>
-            <Form.Control type="text" name="username" onChange={handleChange} />
+            <InputGroup.Text>title</InputGroup.Text>
+            <Form.Control type="text" name="title" onChange={handleChange} />
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroup.Text>password</InputGroup.Text>
-            <Form.Control type="text" name="password" onChange={handleChange} />
+            <InputGroup.Text>image</InputGroup.Text>
+            <Form.Control type="text" name="image" onChange={handleChange} />
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroup.Text>Email</InputGroup.Text>
-            <Form.Control type="text" name="Email" onChange={handleChange} />
+            <InputGroup.Text>amount</InputGroup.Text>
+            <Form.Control type="number" name="amount" onChange={handleChange} />
+          </InputGroup>
+          <InputGroup>
+            <InputGroup.Text>limit</InputGroup.Text>
+            <Form.Control type="number" name="limit" onChange={handleChange} />
+          </InputGroup>
+          <DatePicker
+            onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
+          />
+          <InputGroup>
+            <DatePicker
+              onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
+            />
           </InputGroup>
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={handleSubmit}>
-          Create room
+          Create jam3ya
         </Button>
       </Modal.Footer>
     </Modal>
