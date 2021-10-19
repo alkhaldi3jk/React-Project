@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import SignupModal from "./SignupModal";
 
 function NavBar() {
   return (
@@ -8,7 +9,10 @@ function NavBar() {
         <Nav.Link href="/home">Active</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">Option 2</Nav.Link>
+        <Nav.Link eventKey="link-1">
+          {/* <SignupModal/> */}
+        
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link eventKey="disabled" disabled>

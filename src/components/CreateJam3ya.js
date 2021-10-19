@@ -47,11 +47,11 @@ export default function CreateJam3ya(props) {
             <InputGroup.Text>limit</InputGroup.Text>
             <Form.Control type="number" name="limit" onChange={handleChange} />
           </InputGroup>
-          <DatePicker
+          <DatePicker selected={jam3ya.startDate}
             onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
           />
           <InputGroup>
-            <DatePicker
+            <DatePicker selected={jam3ya.endDate}
               onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
             />
           </InputGroup>

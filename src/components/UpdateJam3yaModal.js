@@ -1,65 +1,82 @@
-import { Modal, Button, InputGroup, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import jam3yaStore from "../stores/Jam3yaStore";
+import { observer } from "mobx-react";
 
-export default function UpdateJam3yaModal(props) {
-  const [jam3ya, setJam3ya] = useState({
-    id: props.jam3ya.id,
-    username: props.jam3ya.username,
-    password: props.jam3ya.password,
-    Email: props.jam3ya.Email,
+function UpdateJam3yaModal({ jam3ya }) {
+  const [newjam3ya, setJam3ya] = useState({
+    title: "",
+    image: "props.jam3ya.password",
   });
   const handleChange = (event) => {
-    setJam3ya({ ...jam3ya, [event.target.name]: event.target.value });
+    setJam3ya({ ...newjam3ya, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    jam3yaStore.updateJam3ya(jam3ya);
-    props.closeModal();
-  };
+  const handleUpdate=()=>{
+    jam3yaStore.updateJam3ya(jam3ya._id)
+    console.log(jam3ya._id)
+  }
   return (
-    <Modal centered show={props.isOpen} onHide={props.closeModal}>
-      <Modal.Header closeButton>
-        <Modal.Title>Update jam3ya</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <InputGroup>
-            <InputGroup.Text>username</InputGroup.Text>
-            <Form.Control
-              value={jam3ya.username}
-              type="text"
-              name="username"
-              onChange={handleChange}
-            />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>password</InputGroup.Text>
-            <Form.Control
-              value={jam3ya.password}
-              type="text"
-              name="password"
-              onChange={handleChange}
-            />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>Email</InputGroup.Text>
-            <Form.Control
-              type="text"
-              name="Email"
-              onChange={handleChange}
-              value={jam3ya.Email}
-            />
-          </InputGroup>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleSubmit}>
-          Update jam3ya
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Update
+      </button>
+
+      {/* <!-- Modal --> */}
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input
+                name="title"
+                placeholder="username"
+                onChange={handleChange}
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleUpdate}
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
+
+export default observer(UpdateJam3yaModal);

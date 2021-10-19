@@ -20,38 +20,45 @@ class Jam3yaStore {
   fetchJam3yat = async () => {
     try {
       const res = await api.get("/jam3ya");
-      console.log(res.data)
+      console.log(res.data);
       this.jam3yat = res.data;
     } catch (error) {
       console.error("Jam3yatStore -> fetchjam3yat -> error", error);
     }
   };
+  // joinJam3ya = async (jam3ya, jam3yaId) => {
+  //   try {
+  //      await api.post(`/jam3ya/join/${jam3yaId}`, jam3ya);
+   
+  //     this.jam3yat= this.jam3yat.push((user) =>{ jam3ya.limit !==jam3yaId
+     
+  //   }
+  //     );
+  //   } catch (error) {
+  //     console.log(" join", error);
+  //   }
+  // };
+  deleteJam3ya = async (jam3yaId) => {
+    try {
+      await api.delete(`/jam3ya/${jam3yaId}`);
+
+      this.jam3yat = this.jam3yat.filter((jam3ya) => jam3ya._id !== jam3yaId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  updateJam3ya = async (jam3yaId,updatedjam3ya) => {
+    try {
+      const response = await api.put(`/jam3ya/${jam3yaId}`, updatedjam3ya);
+      this.jam3yat.map((jam3ya) =>
+        jam3ya._id === updatedjam3ya.id ? response.data : jam3ya
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
-
-// updatejam3ya = async (updatedjam3ya) => {
-//   try {
-//     const response = await axios.put(
-//       `https://coded-miniproject-jam3ya-be.herokuapp.com/jam3ya/${updatedjam3ya.jam3yaId}`,
-//       updatedjam3ya
-//     );
-//     this.Jam3yat = this.Jam3yat.map((jam3ya) =>
-//       jam3ya.id === updatedjam3ya.id ? response.data : jam3ya
-//     );
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// deletejam3ya = async (id) => {
-//   try {
-//     await axios.delete(
-//       `https://coded-miniproject-jam3ya-be.herokuapp.com/jam3ya/${jam3yaId}`
-//     );
-//     this.Jam3yat = this.Jam3yat.filter((jam3ya) => jam3ya.id !== id);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 // availablejam3ya = async () => {
 //   try {

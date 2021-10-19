@@ -14,9 +14,9 @@ function Jam3yaList(props) {
 
   const jam3yaList = jam3yaStore.jam3yat.map((jam3ya) => {
     return (
-      // <Col>
+      <Col>
       <Jam3yaItem classname="list" jam3ya={jam3ya} key={jam3ya.id} />
-      // </Col>
+       </Col>
     );
   });
   return (

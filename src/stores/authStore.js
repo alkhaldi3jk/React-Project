@@ -39,6 +39,7 @@ class AuthStore {
         console.log(error);
       }
     };
+    
   // logging = async (userData, path) => {
   //   try {
   //     const response = await api.post(`/${path}`, userData);
