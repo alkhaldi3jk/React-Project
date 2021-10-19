@@ -23,12 +23,12 @@
   border: 1px solid white;
   overflow: hidden;
 }
-
-.update {
+.A {
   background-color: rgb(31, 54, 31);
   color: white;
 }
-.delete {
+
+.update {
   background-color: rgb(31, 54, 31);
   color: white;
 }
