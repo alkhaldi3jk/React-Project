@@ -20,56 +20,70 @@ export default function CreateJam3ya(props) {
     e.preventDefault();
     Jam3yaStore.createjam3ya(jam3ya);
     console.log(jam3ya);
-    props.closeModal(); // this is to close the modal that is shown
+    // props.closeModal(); // this is to close the modal that is shown
   };
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
-    <div>
-    <Modal centered >
-     
-        <Modal.Title>Create a jam3ya</Modal.Title>
-     
-      <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <InputGroup>
-            <InputGroup.Text>title</InputGroup.Text>
-            <Form.Control type="text" name="title" onChange={handleChange} />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>image</InputGroup.Text>
-            <Form.Control type="text" name="image" onChange={handleChange} />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>amount</InputGroup.Text>
-            <Form.Control type="number" name="amount" onChange={handleChange} />
-          </InputGroup>
-          <InputGroup>
-            <InputGroup.Text>limit</InputGroup.Text>
-            <Form.Control type="number" name="limit" onChange={handleChange} />
-          </InputGroup>
-          <DatePicker selected={jam3ya.startDate}
-            onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
-          />
-          Start Date
-          <InputGroup>
-            <DatePicker selected={jam3ya.endDate}
-              onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Create Jam3ya
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Create Jam3ya</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit}>
+            <InputGroup>
+              <InputGroup.Text>title</InputGroup.Text>
+              <Form.Control type="text" name="title" onChange={handleChange} />
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroup.Text>image</InputGroup.Text>
+              <Form.Control type="text" name="image" onChange={handleChange} />
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroup.Text>amount</InputGroup.Text>
+              <Form.Control
+                type="number"
+                name="amount"
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <InputGroup>
+              <InputGroup.Text>limit</InputGroup.Text>
+              <Form.Control
+                type="number"
+                name="limit"
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <DatePicker
+              selected={jam3ya.startDate}
+              onChange={(date) => setJam3ya({ ...jam3ya, startDate: date })}
             />
-            End Date
-          </InputGroup>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleSubmit}>
-          Create jam3ya
-        </Button>
-      </Modal.Footer>
-    </Modal>
-
-
-{/* // form */}
-
-</div>
+            Start Date
+            <InputGroup>
+              <DatePicker
+                selected={jam3ya.endDate}
+                onChange={(date) => setJam3ya({ ...jam3ya, endDate: date })}
+              />
+              End Date
+            </InputGroup>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleSubmit}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
