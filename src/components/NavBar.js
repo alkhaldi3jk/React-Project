@@ -7,7 +7,6 @@ import SigninModal from "./SigninModal";
 import SignupModal from "./SignupModal";
 import { observer } from "mobx-react";
 
-
 function NavBar() {
   return (
     <div>
@@ -20,7 +19,9 @@ function NavBar() {
             <SigninModal /> <SignupModal />
           </>
         ) : (
-          <Button onClick={authStore.logout}>logout</Button>
+          <Button variant="outline-success" onClick={authStore.logout}>
+            logout
+          </Button>
         )}
       </header>
     </div>

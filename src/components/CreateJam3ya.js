@@ -28,7 +28,7 @@ export default function CreateJam3ya(props) {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="outline-success" onClick={handleShow}>
         Create Jam3ya
       </Button>
 

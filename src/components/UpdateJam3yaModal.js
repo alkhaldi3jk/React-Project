@@ -5,7 +5,6 @@ import { Modal, Button, InputGroup, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 function UpdateJam3yaModal({ jam3ya }) {
   const [newjam3ya, setJam3ya] = useState({
     title: jam3ya.title,
@@ -15,12 +14,12 @@ function UpdateJam3yaModal({ jam3ya }) {
     startDate: "",
     endDate: "",
   });
-  console.log(jam3ya)
+  console.log(jam3ya);
   const handleChange = (event) => {
     setJam3ya({ ...newjam3ya, [event.target.name]: event.target.value });
   };
   const handleUpdate = () => {
-    jam3yaStore.updateJam3ya(jam3ya._id,newjam3ya);
+    jam3yaStore.updateJam3ya(jam3ya._id, newjam3ya);
     console.log(jam3ya._id);
   };
   const [show, setShow] = useState(false);
@@ -29,65 +28,75 @@ function UpdateJam3yaModal({ jam3ya }) {
   const handleShow = () => setShow(true);
   return (
     <>
-    <Button variant="primary" onClick={handleShow}>
-      Update 
-    </Button>
+      <Button variant="outline-success" onClick={handleShow}>
+        Update
+      </Button>
 
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header>
-        <Modal.Title>Update Jam3ya</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleUpdate}>
-          <InputGroup>
-            <InputGroup.Text>title</InputGroup.Text>
-            <Form.Control type="text" name="title" value={newjam3ya.title} onChange={handleChange} />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>image</InputGroup.Text>
-            <Form.Control type="text" name="image" value={newjam3ya.image} onChange={handleChange} />
-          </InputGroup>
-          <br />
-          <InputGroup>
-            <InputGroup.Text>amount</InputGroup.Text>
-            <Form.Control
-              type="number"
-              name="amount"
-              onChange={handleChange}
-              value={newjam3ya.amount}
-            />
-          </InputGroup>
-          <InputGroup>
-            <InputGroup.Text>limit</InputGroup.Text>
-            <Form.Control
-              type="number"
-              name="limit"
-              onChange={handleChange}
-              value={newjam3ya.limit}
-            />
-          </InputGroup>
-          <DatePicker
-            selected={newjam3ya.startDate}
-            onChange={(date) => setJam3ya({ ...newjam3ya, startDate: date })}
-          />
-          Start Date
-          <InputGroup>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Update Jam3ya</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleUpdate}>
+            <InputGroup>
+              <InputGroup.Text>title</InputGroup.Text>
+              <Form.Control
+                type="text"
+                name="title"
+                value={newjam3ya.title}
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroup.Text>image</InputGroup.Text>
+              <Form.Control
+                type="text"
+                name="image"
+                value={newjam3ya.image}
+                onChange={handleChange}
+              />
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroup.Text>amount</InputGroup.Text>
+              <Form.Control
+                type="number"
+                name="amount"
+                onChange={handleChange}
+                value={newjam3ya.amount}
+              />
+            </InputGroup>
+            <InputGroup>
+              <InputGroup.Text>limit</InputGroup.Text>
+              <Form.Control
+                type="number"
+                name="limit"
+                onChange={handleChange}
+                value={newjam3ya.limit}
+              />
+            </InputGroup>
             <DatePicker
-              selected={newjam3ya.endDate}
-              onChange={(date) => setJam3ya({ ...newjam3ya, endDate: date })}
+              selected={newjam3ya.startDate}
+              onChange={(date) => setJam3ya({ ...newjam3ya, startDate: date })}
             />
-            End Date
-          </InputGroup>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleUpdate}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>
+            Start Date
+            <InputGroup>
+              <DatePicker
+                selected={newjam3ya.endDate}
+                onChange={(date) => setJam3ya({ ...newjam3ya, endDate: date })}
+              />
+              End Date
+            </InputGroup>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleUpdate}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
     // <>
     //   {/* i change this class name to btn btn-primary */}
     //   <button
@@ -150,11 +159,7 @@ function UpdateJam3yaModal({ jam3ya }) {
     //     </div>
     //   </div>
     // </>
-
   );
 }
 
-export default
- observer(
-  UpdateJam3yaModal
-  );
+export default observer(UpdateJam3yaModal);

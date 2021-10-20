@@ -27,7 +27,7 @@ function Jam3yaitem(props) {
       {/* i add this type,clas...... */}
       <Button
         type="button"
-        class="A"
+        variant="outline-success"
         data-toggle="modal"
         data-target="#exampleModal"
         onClick={handleDelete}
